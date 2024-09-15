@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: dgrozdanovska30470/kiii_gitactions_demo:latest
+          tags: dgrozdanovska30470/my-app:latest
