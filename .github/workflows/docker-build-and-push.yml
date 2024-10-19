@@ -27,7 +27,7 @@ jobs:
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --push \
-            --tag ${{ secrets.DOCKERHUB_USERNAME }}/lab01-img:latest .
+            --tag ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest .
 
       - name: Clean up
         run: docker buildx prune -a -f
