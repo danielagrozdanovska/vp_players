@@ -3,9 +3,9 @@ version: "1"
 services:
 
   app:
-    image: my-app-image:latest
+    image: my-app:latest
 
-    container_name: teamplayerapp
+    container_name: my-app-container
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
     ports:
@@ -17,7 +17,7 @@ services:
     image: postgres:latest
     container_name: mydb-kiii
     environment:
-      - POSTGRES_USER=sa
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=mydb
     ports:
