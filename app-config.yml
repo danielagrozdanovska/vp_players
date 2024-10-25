@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: vp-namespace
+data:
+  application.properties: |
+    server.port=9092
+    spring.datasource.url=jdbc:postgresql://my-app-service:5432/mydb
+    spring.datasource.username=${DB_USERNAME}
+    spring.datasource.password=${DB_PASSWORD}

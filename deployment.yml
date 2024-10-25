@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  namespace: vp-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: dgrozdanovska30470/my-app:latest
+          ports:
+            - containerPort: 9092
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              subPath: application.properties
+      volumes:
+        - name: config-volume
+          configMap:
+            name: app-config
+            items:
+              - key: application.properties
+                path: application.properties
